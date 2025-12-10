@@ -181,10 +181,9 @@ export default function Hero() {
           </p>
 
           <p className="absolute left-1/2 -translate-x-1/2 mt-4 
-                        text-center text-base md:text-xl lg:text-3xl 
+                        text-center text-base md:text-xl lg:text-2xl 
                         text-black opacity-80 whitespace-nowrap">
-            Delivering trust, comfort & care in the best way possible.  
-            A place where you and your health will be nurtured.
+            Delivering trust, comfort & care in the best way possible. A place where you and your health will be nurtured.
           </p>
         </div>
 
