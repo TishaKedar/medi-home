@@ -167,10 +167,10 @@ export default function Hero() {
       </div>
 
       {/* ---------------- DESKTOP SERVICES ---------------- */}
-      <div className="hidden lg:block relative mt-[20px] md:mt-[50px] lg:mt-[50px] z-30 w-[80%] mx-auto px-4">
+      <div className="hidden lg:block relative z-30 w-[80%] mx-auto px-4">
 
         {/* Heading */}
-        <h2 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold text-black mb-6 md:mb-12 lg:mb-20">
+        <h2 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold text-black mb-6 md:mb-12 lg:mb-20 pt-12">
           SERVICES WE PROVIDE
         </h2>
 
@@ -187,34 +187,39 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Desktop Cards */}
-        <div className="grid grid-cols-4 gap-10">
-          
-          {[
-            { title: "Physiotherapy", img: "/assests/pic1.png" },
-            { title: "X-Ray Service", img: "/assests/pic2.png" },
-            { title: "ECG Checkup", img: "/assests/pic3.png" },
-            { title: "Blood Test", img: "/assests/pic4.png" }
-          ].map((service, i) => (
-            <div key={i} className="relative flex flex-col items-center top-[200px]">
-             
-              <div className="relative w-[300px]">
-                <img src="/assests/box.png" className="w-full h-auto" />
+        {/* Cards Container with fixed positioning */}
+        <div className="relative h-[600px] -mb-80">
+          <div className="absolute top-56 left-0 right-0 grid grid-cols-4 gap-10">
+            
+            {[
+              { title: "Physiotherapy", img: "/assests/pic1.png" },
+              { title: "X-Ray Service", img: "/assests/pic2.png" },
+              { title: "ECG Checkup", img: "/assests/pic3.png" },
+              { title: "Blood Test", img: "/assests/pic4.png" }
+            ].map((service, i) => (
+              <div key={i} className="relative flex flex-col items-center">
+               
+                <div className="relative w-[300px]">
+                  <img src="/assests/box.png" className="w-full h-auto" />
 
-                <p className="absolute top-4 left-4 text-black font-semibold text-lg md:text-xl lg:text-2xl">
-                  {service.title}
-                </p>
+                  <p className="absolute top-4 left-4 text-black font-semibold text-lg md:text-xl lg:text-2xl">
+                    {service.title}
+                  </p>
 
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2
-                                w-[260px] h-[260px] rounded-full overflow-hidden flex items-center justify-center bg-gray-300">
-                  <img src={service.img} className="w-full h-full object-contain"/>
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2
+                                  w-[260px] h-[260px] rounded-full overflow-hidden flex items-center justify-center bg-gray-300">
+                    <img src={service.img} className="w-full h-full object-contain"/>
+                  </div>
+
                 </div>
-
               </div>
-            </div>
-          ))}
+            ))}
 
+          </div>
         </div>
+
+        {/* Add spacing after cards */}
+        <div className="h-0"></div>
 
       </div>
 
