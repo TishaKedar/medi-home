@@ -181,7 +181,7 @@ const Contact = () => {
           <div className="w-full mb-8 overflow-hidden">
             <h2 className="text-slate-800 font-extrabold">
               <span className="block text-7xl">Book an</span>
-              <span className="block text-[140px] leading-tight mt-6">
+              <span className="block text-[130px] leading-tight mt-6">
                 APPOINTMENT
               </span>
             </h2>
@@ -194,7 +194,7 @@ const Contact = () => {
 
               {/* Form */}
               <div className="relative mt-20 col-span-6 flex justify-start pr-4">
-                <div className="bg-white/20 backdrop-blur-md rounded-3xl p-12 shadow-xl h-[950px] w-full max-w-[900px]">
+                <div className="bg-white/20 backdrop-blur-md rounded-3xl p-12 shadow-xl h-[800px] w-full max-w-[900px]">
                   <div className="flex flex-col justify-center h-full space-y-8">
 
                     <input type="text" placeholder="Name"
@@ -227,8 +227,8 @@ const Contact = () => {
               </div>
 
               {/* Doctor Image */}
-              <div className="relative mt-[300px] col-span-6 flex justify-end pl-4 -translate-x-20">
-  <div className="w-[400px] h-[400px] rounded-full overflow-hidden shadow-2xl border-8 border-white/40">
+              <div className="relative mt-[300px] col-span-6 flex justify-end pl-4 -translate-x-25">
+  <div className="w-[350px] h-[350px] rounded-full overflow-hidden shadow-2xl border-8 border-white/40">
     <img src="/assests/docp.png" className="w-full h-full object-cover" />
   </div>
 </div>

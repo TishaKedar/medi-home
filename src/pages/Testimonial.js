@@ -45,7 +45,7 @@ export default function Testimonial() {
     }
   ];
 
-  // ⭐ FIX: Dynamic items per screen
+  // Dynamic items per screen
   useEffect(() => {
     const updateItems = () => {
       if (window.innerWidth >= 1024) setItemsPerPage(3);
@@ -91,14 +91,21 @@ export default function Testimonial() {
                 className="min-w-full max-w-full flex-shrink-0 overflow-hidden box-border"
               >
 
-                {/* DESKTOP – 3 CARDS */}
-                <div className="hidden lg:grid grid-cols-3 gap-10">
-                  {testimonials
-                    .slice(pageIndex * 3, (pageIndex + 1) * 3)
-                    .map((t, i) => (
-                      <Card key={i} t={t} />
-                    ))}
-                </div>
+                {/* DESKTOP – 3 CARDS (REDUCED SIZE) */}
+                <div className="hidden lg:flex justify-center">
+  {testimonials
+    .slice(pageIndex * 3, (pageIndex + 1) * 3)
+    .map((t, i) => (
+      <div
+        key={i}
+        className="scale-[0.85] -ml-6 first:ml-0"
+      >
+        <Card t={t} />
+      </div>
+    ))}
+</div>
+
+
 
                 {/* TABLET – 2 CARDS */}
                 <div className="hidden md:grid lg:hidden grid-cols-2 gap-10">
@@ -164,7 +171,7 @@ export default function Testimonial() {
 /* CARD COMPONENT */
 function Card({ t }) {
   return (
-    <div className="relative p-2">
+    <div className="relative p-2 max-w-[420px] mx-auto">
       <img src={t.bgImage} className="w-full h-auto object-contain" />
 
       <div className="absolute inset-0 flex flex-col items-center px-8 pt-16">
