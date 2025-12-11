@@ -20,11 +20,11 @@ const Contact = () => {
         backgroundSize: "100% 90%",
       }}
     >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 lg:py-16">
+      <div className="max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 lg:py-16">
 
-        {/* Heading */}
-        <div className="w-full mb-6 sm:mb-8 md:mb-8 lg:mb-8">
-          <h2 className="text-slate-800 font-extrabold relative lg:-ml-80 md:-ml-40">
+        {/* Heading - positioned left with max-width */}
+        <div className="w-full mb-6 sm:mb-8 md:mb-8 lg:mb-8 overflow-hidden">
+          <h2 className="text-slate-800 font-extrabold relative max-w-2xl">
             <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
               Book an
             </span>
@@ -35,16 +35,16 @@ const Contact = () => {
         </div>
 
         {/* ================= FORM + DOCTOR IMAGE ================= */}
-        <div className="relative w-full">
+        <div className="relative w-full overflow-hidden">
 
-          {/* Decorative circle */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[300px] sm:w-[350px] md:w-[400px] lg:w-[450px] h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] bg-[#5a9b85] rounded-full opacity-50 blur-3xl -z-10"></div>
+          {/* Decorative circle - constrained */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[250px] sm:w-[300px] md:w-[320px] lg:w-[350px] h-[200px] sm:h-[250px] md:h-[280px] lg:h-[320px] bg-[#5a9b85] rounded-full opacity-50 blur-3xl -z-10 pointer-events-none"></div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-0 items-start overflow-hidden">
 
-            {/* Left: Taller Frosted Glass Form */}
-            <div className="relative mt-8 sm:mt-12 md:mt-16 lg:mt-20 lg:-ml-80 flex justify-center md:justify-start">
-              <div className="bg-white/20 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl h-[600px] sm:h-[700px] md:h-[800px] lg:h-[900px] w-[300px] sm:w-[400px] md:w-[500px] lg:w-[900px]">
+            {/* Left: Taller Frosted Glass Form - spans 6 columns */}
+            <div className="relative mt-8 sm:mt-12 md:mt-16 lg:mt-20 md:col-span-6 flex justify-center md:justify-start px-0 md:pr-4">
+              <div className="bg-white/20 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl h-[600px] sm:h-[700px] md:h-[800px] lg:h-[950px] w-[300px] sm:w-[400px] md:w-full lg:max-w-[900px]">
                 <div className="flex flex-col justify-center h-full space-y-6 sm:space-y-7 md:space-y-8 lg:space-y-8">
 
                   <input type="text" placeholder=""
@@ -84,9 +84,9 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Right: Larger Doctor Image */}
-            <div className="flex justify-center md:justify-end mt-4 sm:mt-8 md:mt-12 lg:mt-[300px] md:translate-x-[250px]">
-              <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 sm:border-6 md:border-8 lg:border-8 border-white/40">
+            {/* Right: Larger Doctor Image - spans 6 columns */}
+            <div className="relative mt-4 sm:mt-8 md:mt-12 lg:mt-[300px] md:col-span-6 flex justify-center md:justify-end px-10 md:pl-0 lg:pl-4">
+              <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] rounded-full overflow-hidden shadow-2xl border-4 sm:border-6 md:border-8 lg:border-8 border-white/40 flex-shrink-0">
                 <img
                   src="/assests/docp.png"
                   alt="Doctor consultation"
