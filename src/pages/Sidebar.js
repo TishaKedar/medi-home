@@ -9,7 +9,7 @@ export default function Sidebar() {
       <div className="hidden lg:flex absolute z-30 bg-[#1E6D4E] rounded-[165px] flex-col items-center shadow-xl
                       left-[3%] top-[5%] w-[22%] lg:w-[339px] md:h-[700px] lg:h-[800px]">
         {/* White Circle */}
-        <div className="absolute left-[5%] top-[3%] w-[70%] lg:w-[290px] aspect-square bg-white rounded-full shadow-md flex items-center justify-center">
+        <div className="absolute left-[6%] top-[3%] w-[70%] lg:w-[290px] aspect-square bg-white rounded-full shadow-md flex items-center justify-center">
           <p className="text-black text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-semibold text-center">
             MEDI HOME
           </p>
@@ -53,6 +53,7 @@ export default function Sidebar() {
         {/* Slide-down Menu */}
         {open && (
           <div className="mt-3 bg-[#1E6D4E] w-[200px] rounded-2xl shadow-xl p-5 flex flex-col gap-5 text-white text-xl font-medium transition-all">
+            
             <button onClick={() => setOpen(false)}>HOME</button>
             <button onClick={() => setOpen(false)}>ABOUT</button>
             <button onClick={() => setOpen(false)}>SERVICES</button>
@@ -61,29 +62,7 @@ export default function Sidebar() {
         )}
       </div>
 
-      {/* ---------- TABLET SIDEBAR CIRCLES (md only: 769px-1023px) ---------- */}
-      <div className="hidden md:flex lg:hidden absolute z-30 flex-col items-start
-                      left-[2%] top-[3%]">
-        {/* White Circle */}
-        <div className="relative w-[100px] h-[100px] bg-white rounded-full shadow-md flex items-center justify-center">
-          <p className="text-black text-sm font-semibold text-center px-2">
-            MEDI HOME
-          </p>
-        </div>
-
-        {/* Big White Circle */}
-        <div className="relative left-[60px] top-[30px] w-[140px] h-[140px] bg-white rounded-full shadow-xl flex items-center justify-center text-center">
-          <p className="text-black text-xs font-semibold leading-snug px-2">
-            Your Health,<br />Our Priority
-          </p>
-        </div>
-
-        {/* Leaf Circle */}
-        <div className="relative left-[100px] top-[50px] w-[70px] h-[70px] bg-[#1E6D4E] rounded-full shadow-xl flex items-center justify-center">
-          <img src="/assests/Frame.png" className="w-[50px] object-contain" />
-        </div>
-      </div>
+      
     </>
   );
 }
-
