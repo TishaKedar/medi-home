@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div className="relative w-full mt-0 sm:mt-0 md:mt-0 lg:-mt-[500px]">
+    <div className="relative w-full mt-0 sm:mt-0 md:mt-0 lg:-mt-[600px]">
 
       {/* Green Background */}
       <div className="absolute inset-0 w-full h-[800px] sm:h-[1000px] md:h-[1000px] lg:h-[1400px] bg-[#09B37D] z-0"></div>

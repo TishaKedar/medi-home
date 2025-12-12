@@ -20,7 +20,7 @@ const Contact = () => {
   return (
     <section
       aria-label="Book an appointment"
-      className="w-full relative overflow-hidden min-h-[800px] sm:min-h-[1000px] md:min-h-[1200px] lg:min-h-[2000px]"
+      className="w-full relative overflow-hidden min-h-[800px] sm:min-h-[1000px] md:min-h-[1200px] lg:min-h-[1400px]"
       style={{
         background: isDesktop
           ? "#b7d1c8 url('/assests/footer.png') no-repeat center 500px / 100% 90%"
@@ -310,3 +310,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
