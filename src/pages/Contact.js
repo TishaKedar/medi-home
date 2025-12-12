@@ -228,7 +228,7 @@ const Contact = () => {
 
               {/* Doctor Image */}
               <div className="relative mt-[300px] col-span-6 flex justify-end pl-4 -translate-x-25">
-  <div className="w-[350px] h-[350px] rounded-full overflow-hidden shadow-2xl border-8 border-white/40">
+  <div className="w-[350px] h-[350px] rounded-full overflow-hidden shadow-2xl">
     <img src="/assests/docp.png" className="w-full h-full object-cover" />
   </div>
 </div>
@@ -241,15 +241,23 @@ const Contact = () => {
 
       {/* ================= FOOTER CONTENT ================= */}
       <footer className="w-full text-white py-20 sm:py-28 lg:py-40 px-2 sm:px-3 lg:px-4 text-center sm:text-left">
+
   <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-16 lg:gap-20 place-items-center sm:place-items-start">
 
     {/* Brand */}
     <div className="flex flex-col items-center sm:items-start">
-      <div className="flex items-center gap-4 mb-8">
-        <Leaf className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14" />
-        <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold">MEDI HOME</h3>
-      </div>
-      <p className="text-lg sm:text-xl lg:text-2xl text-white/80">
+    <div className="flex items-center gap-4 mb-8">
+    <div className="flex items-center gap-4 mb-8"> <Leaf className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16" />  </div>
+
+  <h3 className="text-3xl sm:text-4xl lg:text-3xl font-bold whitespace-nowrap">
+  MEDI HOME
+</h3>
+
+</div>
+
+
+
+      <p className="text-lg sm:text-xl lg:text-1xl text-white/80">
         Our mission is to provide you with the best care solutions.
       </p>
     </div>
@@ -257,7 +265,8 @@ const Contact = () => {
     {/* Clinic Links */}
     <div className="flex flex-col items-center sm:items-start">
       <h4 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-8">Clinic</h4>
-      <ul className="space-y-4 text-lg sm:text-xl lg:text-2xl text-white/80">
+
+      <ul className="space-y-8 text-lg sm:text-xl lg:text-3xl text-white/80">
         <li className="hover:text-white">Home</li>
         <li className="hover:text-white">Services</li>
         <li className="hover:text-white">About Us</li>
@@ -270,9 +279,11 @@ const Contact = () => {
       <h4 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-8">
         Contact Us
       </h4>
-      <div className="space-y-6 text-lg sm:text-xl lg:text-2xl text-white/80">
+
+      <div className="space-y-6 text-lg sm:text-xl lg:text-3xl text-white/80">
+
         <div className="flex items-start gap-4">
-          <Phone className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 mt-1" />
+          <Phone className="w-6 h-6 sm:w-7 sm:h-7 lg:w-10 lg:h-10 mt-1" />
           <div>
             <p>Reception 1</p>
             <p>+91 1234567891</p>
@@ -280,12 +291,13 @@ const Contact = () => {
         </div>
 
         <div className="flex items-start gap-4">
-          <Phone className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 mt-1" />
+          <Phone className="w-6 h-6 sm:w-7 sm:h-7 lg:w-10 lg:h-10 mt-1" />
           <div>
             <p>Reception 2</p>
             <p>+91 1234567891</p>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -294,7 +306,8 @@ const Contact = () => {
       <h4 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-8">
         Address
       </h4>
-      <p className="text-lg sm:text-xl lg:text-2xl text-white/80">
+
+      <p className="text-lg sm:text-xl lg:text-3xl text-white/80">
         Medi Home,<br />
         Varacha,<br />
         Surat.
@@ -303,6 +316,7 @@ const Contact = () => {
 
   </div>
 </footer>
+
 
 
     </section>

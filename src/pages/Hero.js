@@ -159,7 +159,7 @@ export default function Hero() {
       </div>
 
       {/* --------- DESKTOP SERVICES --------- */}
-      <div className="hidden lg:block relative z-30 w-[80%] mx-auto px-4 -mt-32">
+      <div className="hidden lg:block relative z-30 w-[80%] mx-auto px-4 -mt-40">
         <h2 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold text-black mb-6 md:mb-12 lg:mb-16 pt-12">
           SERVICES WE PROVIDE
         </h2>
@@ -193,7 +193,7 @@ export default function Hero() {
                 </p>
 
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2
-                                w-[180px] h-[180px]
+                                w-[200px] h-[200px]
                                 rounded-full overflow-hidden flex items-center justify-center bg-gray-300">
                   <img src={service.img} className="w-full h-full object-contain"/>
                 </div>

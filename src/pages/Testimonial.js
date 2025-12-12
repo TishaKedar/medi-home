@@ -98,7 +98,7 @@ export default function Testimonial() {
     .map((t, i) => (
       <div
         key={i}
-        className="scale-[0.85] -ml-6 first:ml-0"
+        className="scale-[0.95] -ml-1 first:ml-0"
       >
         <Card t={t} />
       </div>
