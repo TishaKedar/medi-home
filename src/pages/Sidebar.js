@@ -46,8 +46,8 @@ export default function Sidebar() {
 
         {/* Leaf Circle */}
         <div
-          className="absolute left-[670px] top-[430px] max-w-[110px] max-h-[110px]
-                     w-[110px] aspect-square bg-[#1E6D4E] 
+          className="absolute left-[670px] top-[440px] max-w-[130px] max-h-[130px]
+                     w-[130px] aspect-square bg-[#1E6D4E] 
                      rounded-full shadow-xl flex items-center justify-center"
         >
           <img
