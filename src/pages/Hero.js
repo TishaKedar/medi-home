@@ -13,7 +13,7 @@ export default function Hero() {
       {/* ADMIN BUTTON */}
       <button
         onClick={() => navigate("/admin")}
-        className="absolute top-5 right-5 z-50 bg-[#1E6D4E] text-white px-5 py-2 rounded-full shadow-lg hover:bg-[#145a40] transition"
+        className="fixed top-5 right-5 z-[9999] bg-red-500 text-white px-5 py-2"
       >
         Admin
       </button>
