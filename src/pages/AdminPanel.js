@@ -26,7 +26,7 @@ export default function AdminPanel() {
   useEffect(() => {
     if (!token) { navigate("/admin"); return; }
     fetchAppointments();
-  }, []);
+  }, [fetchAppointments, navigate, token]);
 
   const fetchAppointments = async () => {
     try {
