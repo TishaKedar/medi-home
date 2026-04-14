@@ -1,45 +1,55 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Leaf, Search, LogOut, Trash2 } from "lucide-react";
 
 const STATUS_COLORS = {
-  Pending:   "bg-yellow-100 text-yellow-700",
+  Pending: "bg-yellow-100 text-yellow-700",
   Confirmed: "bg-blue-100 text-blue-700",
   Completed: "bg-green-100 text-green-700",
 };
 
 const NEXT_STATUS = {
-  Pending:   "Confirmed",
+  Pending: "Confirmed",
   Confirmed: "Completed",
   Completed: "Pending",
 };
 
 export default function AdminPanel() {
   const [appointments, setAppointments] = useState([]);
-  const [search, setSearch]             = useState("");
+  const [search, setSearch] = useState("");
   const [filterStatus, setFilterStatus] = useState("All");
-  const [error, setError]               = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const token = localStorage.getItem("adminToken");
 
-  useEffect(() => {
-    if (!token) { navigate("/admin"); return; }
-    fetchAppointments();
-  }, [fetchAppointments, navigate, token]);
-
-  const fetchAppointments = async () => {
+  // ✅ FIXED: wrapped in useCallback
+  const fetchAppointments = useCallback(async () => {
     try {
       const res = await fetch("/api/appointments", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      if (res.status === 401) { navigate("/admin"); return; }
+
+      if (res.status === 401) {
+        navigate("/admin");
+        return;
+      }
+
       const data = await res.json();
       setAppointments(data);
     } catch {
       setError("Failed to load appointments");
     }
-  };
+  }, [token, navigate]);
+
+  // ✅ FIXED: proper dependencies
+  useEffect(() => {
+    if (!token) {
+      navigate("/admin");
+      return;
+    }
+    fetchAppointments();
+  }, [token, navigate, fetchAppointments]);
 
   const handleStatusCycle = async (id, current) => {
     const next = NEXT_STATUS[current];
@@ -52,6 +62,7 @@ export default function AdminPanel() {
         },
         body: JSON.stringify({ status: next }),
       });
+
       const updated = await res.json();
       setAppointments((prev) =>
         prev.map((a) => (a._id === id ? updated : a))
@@ -79,13 +90,16 @@ export default function AdminPanel() {
       a.name.toLowerCase().includes(search.toLowerCase()) ||
       a.email.toLowerCase().includes(search.toLowerCase()) ||
       (a.city || "").toLowerCase().includes(search.toLowerCase());
-    const matchStatus = filterStatus === "All" || a.status === filterStatus;
+
+    const matchStatus =
+      filterStatus === "All" || a.status === filterStatus;
+
     return matchSearch && matchStatus;
   });
 
   const counts = {
-    All:       appointments.length,
-    Pending:   appointments.filter((a) => a.status === "Pending").length,
+    All: appointments.length,
+    Pending: appointments.filter((a) => a.status === "Pending").length,
     Confirmed: appointments.filter((a) => a.status === "Confirmed").length,
     Completed: appointments.filter((a) => a.status === "Completed").length,
   };
@@ -96,11 +110,19 @@ export default function AdminPanel() {
       <header className="bg-[#1F775B] text-white px-6 py-4 flex justify-between items-center shadow-md">
         <div className="flex items-center gap-3">
           <Leaf className="w-7 h-7" />
-          <span className="text-2xl font-bold tracking-wide">MEDI HOME</span>
-          <span className="ml-3 text-white/70 text-sm font-medium">Admin Dashboard</span>
+          <span className="text-2xl font-bold tracking-wide">
+            MEDI HOME
+          </span>
+          <span className="ml-3 text-white/70 text-sm font-medium">
+            Admin Dashboard
+          </span>
         </div>
+
         <button
-          onClick={() => { localStorage.removeItem("adminToken"); navigate("/admin"); }}
+          onClick={() => {
+            localStorage.removeItem("adminToken");
+            navigate("/admin");
+          }}
           className="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition text-sm"
         >
           <LogOut className="w-4 h-4" /> Logout
@@ -108,7 +130,6 @@ export default function AdminPanel() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
-
         {/* Stat Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
           {["All", "Pending", "Confirmed", "Completed"].map((s) => (
@@ -121,7 +142,9 @@ export default function AdminPanel() {
                   : "border-transparent bg-white hover:border-gray-200"
               }`}
             >
-              <p className="text-3xl font-bold text-[#1F775B]">{counts[s]}</p>
+              <p className="text-3xl font-bold text-[#1F775B]">
+                {counts[s]}
+              </p>
               <p className="text-sm text-gray-500 mt-1">{s}</p>
             </button>
           ))}
@@ -139,6 +162,7 @@ export default function AdminPanel() {
               className="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1F775B]/30 text-sm"
             />
           </div>
+
           <div className="flex gap-2 flex-wrap">
             {["All", "Pending", "Confirmed", "Completed"].map((s) => (
               <button
@@ -158,6 +182,7 @@ export default function AdminPanel() {
 
         {/* Table */}
         {error && <p className="text-red-500 mb-4">{error}</p>}
+
         <div className="bg-white rounded-2xl shadow-sm overflow-x-auto">
           <table className="w-full text-sm text-left">
             <thead>
@@ -173,6 +198,7 @@ export default function AdminPanel() {
                 <th className="px-5 py-4">Actions</th>
               </tr>
             </thead>
+
             <tbody>
               {filtered.length === 0 ? (
                 <tr>
@@ -182,24 +208,46 @@ export default function AdminPanel() {
                 </tr>
               ) : (
                 filtered.map((a) => (
-                  <tr key={a._id} className="border-t border-gray-50 hover:bg-gray-50 transition">
-                    <td className="px-5 py-4 font-medium text-gray-800">{a.name}</td>
-                    <td className="px-5 py-4 text-gray-600">{a.email}</td>
-                    <td className="px-5 py-4 text-gray-600">{a.phone}</td>
-                    <td className="px-5 py-4 text-gray-600">{a.age || "—"}</td>
-                    <td className="px-5 py-4 text-gray-600">{a.city || "—"}</td>
-                    <td className="px-5 py-4 text-gray-600 max-w-[150px] truncate">{a.message || "—"}</td>
+                  <tr
+                    key={a._id}
+                    className="border-t border-gray-50 hover:bg-gray-50 transition"
+                  >
+                    <td className="px-5 py-4 font-medium text-gray-800">
+                      {a.name}
+                    </td>
+                    <td className="px-5 py-4 text-gray-600">
+                      {a.email}
+                    </td>
+                    <td className="px-5 py-4 text-gray-600">
+                      {a.phone}
+                    </td>
+                    <td className="px-5 py-4 text-gray-600">
+                      {a.age || "—"}
+                    </td>
+                    <td className="px-5 py-4 text-gray-600">
+                      {a.city || "—"}
+                    </td>
+                    <td className="px-5 py-4 text-gray-600 max-w-[150px] truncate">
+                      {a.message || "—"}
+                    </td>
+
                     <td className="px-5 py-4">
                       <button
-                        onClick={() => handleStatusCycle(a._id, a.status)}
+                        onClick={() =>
+                          handleStatusCycle(a._id, a.status)
+                        }
                         className={`px-3 py-1 rounded-full text-xs font-semibold cursor-pointer transition hover:opacity-80 ${STATUS_COLORS[a.status]}`}
                       >
                         {a.status}
                       </button>
                     </td>
+
                     <td className="px-5 py-4 text-gray-400 text-xs">
-                      {a.createdAt ? new Date(a.createdAt).toLocaleDateString("en-IN") : "—"}
+                      {a.createdAt
+                        ? new Date(a.createdAt).toLocaleDateString("en-IN")
+                        : "—"}
                     </td>
+
                     <td className="px-5 py-4">
                       <button
                         onClick={() => handleDelete(a._id)}
@@ -215,6 +263,7 @@ export default function AdminPanel() {
             </tbody>
           </table>
         </div>
+
         <p className="text-xs text-gray-400 mt-3 text-right">
           Showing {filtered.length} of {appointments.length} appointments · Click status badge to cycle it
         </p>
