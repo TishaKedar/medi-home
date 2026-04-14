@@ -52,6 +52,7 @@ export default function Sidebar() {
         >
           <img
             src="/assests/Frame.png"
+            alt="Leaf icon"   // ✅ FIXED
             className="w-[70%] object-contain"
           />
         </div>

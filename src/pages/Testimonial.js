@@ -45,7 +45,6 @@ export default function Testimonial() {
     }
   ];
 
-  // Dynamic items per screen
   useEffect(() => {
     const updateItems = () => {
       if (window.innerWidth >= 1024) setItemsPerPage(3);
@@ -77,7 +76,6 @@ export default function Testimonial() {
           WHAT OUR PATIENTS SAY ABOUT US?
         </h2>
 
-        {/* CAROUSEL */}
         <div className="relative px-0 overflow-hidden">
 
           <div
@@ -91,23 +89,18 @@ export default function Testimonial() {
                 className="min-w-full max-w-full flex-shrink-0 overflow-hidden box-border"
               >
 
-                {/* DESKTOP – 3 CARDS (REDUCED SIZE) */}
+                {/* DESKTOP */}
                 <div className="hidden lg:flex justify-center">
-  {testimonials
-    .slice(pageIndex * 3, (pageIndex + 1) * 3)
-    .map((t, i) => (
-      <div
-        key={i}
-        className="scale-[0.95] -ml-1 first:ml-0"
-      >
-        <Card t={t} />
-      </div>
-    ))}
-</div>
+                  {testimonials
+                    .slice(pageIndex * 3, (pageIndex + 1) * 3)
+                    .map((t, i) => (
+                      <div key={i} className="scale-[0.95] -ml-1 first:ml-0">
+                        <Card t={t} />
+                      </div>
+                    ))}
+                </div>
 
-
-
-                {/* TABLET – 2 CARDS */}
+                {/* TABLET */}
                 <div className="hidden md:grid lg:hidden grid-cols-2 gap-10">
                   {testimonials
                     .slice(pageIndex * 2, (pageIndex + 1) * 2)
@@ -116,7 +109,7 @@ export default function Testimonial() {
                     ))}
                 </div>
 
-                {/* MOBILE – 1 CARD */}
+                {/* MOBILE */}
                 <div className="md:hidden flex justify-center">
                   {testimonials
                     .slice(pageIndex, pageIndex + 1)
@@ -172,7 +165,13 @@ export default function Testimonial() {
 function Card({ t }) {
   return (
     <div className="relative p-2 max-w-[420px] mx-auto">
-      <img src={t.bgImage} className="w-full h-auto object-contain" />
+      
+      {/* Background Image */}
+      <img 
+        src={t.bgImage} 
+        alt="testimonial background"   // ✅ FIXED
+        className="w-full h-auto object-contain" 
+      />
 
       <div className="absolute inset-0 flex flex-col items-center px-8 pt-16">
         <h3 className="text-3xl font-bold text-black mb-8">{t.name}</h3>
@@ -183,7 +182,12 @@ function Card({ t }) {
             <SiComma />
           </div>
 
-          <img src={t.textBoxImage} className="w-full h-auto object-contain" />
+          {/* Text Box Image */}
+          <img 
+            src={t.textBoxImage} 
+            alt="testimonial text box"   // ✅ FIXED
+            className="w-full h-auto object-contain" 
+          />
 
           <div className="absolute inset-0 flex items-center justify-center p-10">
             <p className="text-black text-lg leading-relaxed">{t.text}</p>
